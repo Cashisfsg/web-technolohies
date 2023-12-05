@@ -1,0 +1,12 @@
+{
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnType": true,
+        "editor.formatOnSave": true
+    },
+    "editor.formatOnSave": true,
+
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.analysis.typeCheckingMode": "off"
+}

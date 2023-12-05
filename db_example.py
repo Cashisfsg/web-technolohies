@@ -24,7 +24,21 @@ def ensure_connection(sqlite_query):
     return query
 
 
+@ensure_connection
+def init_sqlite(connection):
+    cursor = connection.cursor()
+
+    cursor.execute("SELECT sqlite_version();")
+    (version,) = cursor.fetchone()
+    print(f"SQLite Database version is: {version}")
+    print("Database successfully created")
+
+
 def main():
+    init_sqlite()
+
+    db_exists = os.path.exists(DB)
+
     if db_exists:
         pass  #! Do something
     else:
