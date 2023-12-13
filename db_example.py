@@ -3,7 +3,7 @@ import sqlite3
 import sys
 
 
-DB = ""  #! Set DB NAME
+DB = "test.db"  #! Set DB NAME
 
 db_exists = os.path.exists(DB)
 
@@ -34,13 +34,26 @@ def init_sqlite(connection):
     print("Database successfully created")
 
 
+@ensure_connection
+def delete_table(connection):
+    cursor = connection.cursor()
+
+    cursor.execute(
+        """--sql
+        DROP TABLE IF EXISTS pupils
+    """
+    )
+    connection.commit()
+    print("Table pupils successfully deleted")
+
+
 def main():
     init_sqlite()
 
     db_exists = os.path.exists(DB)
 
     if db_exists:
-        pass  #! Do something
+        delete_table()  #! Do something
     else:
         print("Database does not exists, create a new database.")
 
